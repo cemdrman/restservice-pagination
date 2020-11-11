@@ -12,6 +12,4 @@ public interface ProductRespository extends PagingAndSortingRepository<Product, 
 
 	Page<Product> findAll(Pageable pageable);
 
-	Page<Product> findByName(String name, Pageable pageable);
-
 }

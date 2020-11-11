@@ -29,7 +29,7 @@ public class RestservicePaginationApplication {
 		List<Product> productList = new ArrayList<>();
 
 		for (int i = 1; i <= 30; i++) {
-			String productName = "Product".concat(" " + i);
+			String productName = "Product".concat("_" + i);
 			productList
 					.add(new Product(new Long(i), productName, "https://bilisim.io/".concat(productName), getAmount()));
 		}
