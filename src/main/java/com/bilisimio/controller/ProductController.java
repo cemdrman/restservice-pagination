@@ -18,8 +18,11 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping(value = "/products")
-	public ResponseEntity<Page<Product>> fetchProducts(@RequestParam("page") int page, @RequestParam("size") int size) {
-		return new ResponseEntity<Page<Product>>(productService.getAllProducts(page, size), HttpStatus.OK);
+	public ResponseEntity<Page<Product>> fetchProducts(
+			@RequestParam(required = false, name = "productName") String productName,
+			@RequestParam(defaultValue = "0", name = "page") int page,
+			@RequestParam(defaultValue = "5", name = "size") int size) {
+		return new ResponseEntity<Page<Product>>(productService.getAllProducts(productName, page, size), HttpStatus.OK);
 	}
 
 }
