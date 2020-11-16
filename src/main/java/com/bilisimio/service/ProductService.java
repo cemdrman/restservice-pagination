@@ -24,7 +24,7 @@ public class ProductService {
 			return productRespository.findAll(pageable);
 		}
 		return productRespository.findByNameContaining(productName, pageable);
-		// return productRespository.findAllByName(productName, pageable);
+
 	}
 
 	private Pageable createPageable(int page, int size) {
@@ -32,6 +32,10 @@ public class ProductService {
 		Pageable pageable1 = PageRequest.of(page, size);
 		Pageable pageable2 = PageRequest.of(page, size, Direction.ASC, "id");
 		return pageable;
+	}
+
+	public Product getProductByName(String productName) {
+		return productRespository.findByNameIgnoreCase(productName);
 	}
 
 }

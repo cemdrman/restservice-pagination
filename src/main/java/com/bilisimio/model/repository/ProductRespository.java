@@ -2,19 +2,18 @@ package com.bilisimio.model.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import com.bilisimio.model.Product;
 
 @Repository
-public interface ProductRespository extends PagingAndSortingRepository<Product, Long>, CrudRepository<Product, Long>  {
+public interface ProductRespository extends PagingAndSortingRepository<Product, Long> {
 
 	Page<Product> findAll(Pageable pageable);
 
-	Page<Product> findAllByName(String productName, Pageable pageable);
-
 	Page<Product> findByNameContaining(String productName, Pageable pageable);
+
+	Product findByNameIgnoreCase(String productName);
 
 }
